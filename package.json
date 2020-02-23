@@ -1,0 +1,19 @@
+{
+  "name": "mosaicrestapi",
+  "version": "1.0.0",
+  "description": "Mosaic API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MOSAIC-Egypt/mosaicRestApi.git"
+  },
+  "author": "Amr Nabil, Mina Magdy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MOSAIC-Egypt/mosaicRestApi/issues"
+  },
+  "homepage": "https://github.com/MOSAIC-Egypt/mosaicRestApi#readme"
+}
