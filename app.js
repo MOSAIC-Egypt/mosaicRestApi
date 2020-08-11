@@ -11,7 +11,7 @@ var expressValidator  = require('express-validator');//req.checkbody()
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
-//mongodb://heroku_8bd94qrf:irstf0rv1ds970eebtislm0apf@ds029638.mlab.com:29638/heroku_8bd94qrf
+
 mongoose.connect("mongodb+srv://mon:mon12345678@cluster0.dp1dy.mongodb.net/mosaic?retryWrites=true&w=majority", { useNewUrlParser: true, useCreateIndex: true, },function(error){
   if(error) throw error
     console.log(`connect mongodb success`);

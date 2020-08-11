@@ -16,6 +16,9 @@ var userSchema = mongoose.Schema({
     Address: {
         type: String
     },
+    phone: {
+        type: String
+    },
     admin: {
         type: String
     },
@@ -27,6 +30,14 @@ var userSchema = mongoose.Schema({
 var User = module.exports = mongoose.model('User', userSchema);
 
 module.exports.createUser = function (newUser, callback) {
+    bcrypt.genSalt(10, function (err, salt) {
+        bcrypt.hash(newUser.password, salt, function (err, hash) {
+            newUser.password = hash;
+            newUser.save(callback);
+        });
+    });
+}
+module.exports.EditUser = function (newUser, callback) {
     bcrypt.genSalt(10, function (err, salt) {
         bcrypt.hash(newUser.password, salt, function (err, hash) {
             newUser.password = hash;

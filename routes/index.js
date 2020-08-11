@@ -25,7 +25,56 @@ router.get('/products', function (req, res, next) {
     res.json({ products: products })
   })
 });
+//POST /products
+router.post('/products/new', function (req, res, next) {
+  const {
+    imagePath,
+    title,
+    key,
+    model,
+    brandname,
+    placeoforigin,
+    attribute,
+    value,
+    units,
+    per,
+    deliverytime,
+    description,
+    category
+  } = req.body;
+  req.checkBody("title", "title is required").notEmpty();
+  req.checkBody("description", "description is required").notEmpty();
+  let missingFieldErrors = req.validationErrors();
+  if (missingFieldErrors) {
+    let err = new TypedError("product error", 400, "missing_field", {
+      errors: missingFieldErrors,
+    });
+    return next(err);
+  }
 
+  var newProduct = new Product({
+    imagePath: imagePath,
+    title: title,
+    key: key,
+    model: model,
+    brandname: brandname,
+    placeoforigin:placeoforigin,
+    attribute: attribute,
+    value: value,
+    units: units,
+    per: per,
+    deliverytime: deliverytime,
+    description: description,
+    category:category
+  });
+
+  var new_product = new Product(req.body);
+  new_product.save(function(err, product) {
+    if (err)
+      res.send(err);
+    res.json(product);
+  });
+});
 //GET /products/:id
 router.get('/products/:id', function (req, res, next) {
   let productId = req.params.id;
